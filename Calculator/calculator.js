@@ -1,3 +1,5 @@
+// new comments to add to the git repo
+
 var state = {};
 state = {
   // default value to display is "0" in both current & display memory.
