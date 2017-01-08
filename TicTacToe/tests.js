@@ -1,50 +1,100 @@
-// Unit tests
-// ################
 
-// f. gameWinner
+function t_findWinner (){
 
-var tOutcome = {}
-var tGameWinner = {}
+  let testOutcomes = {testFunc: findWinner}
 
-var testGameArray =
-  [
-    ["x", "x", "x"],
-    [" ", "x", " "],
-    ["o", "o", " "]
-  ]
+  let tGameArray =
+    [
+      ["x", "x", "x"],
+      [" ", "x", " "],
+      ["o", "o", " "]
+    ]
 
-if(typeof(gameWinner(testGameArray)) === "object"){
-  tGameWinner.test1 = "Pass"
-  } else {
-  tGameWinner.test1 = "Fail"
-  }
+  if(typeof(findWinner(tGameArray)) === "object"){
+    testOutcomes.test1_1 = "Pass"
+    } else {
+    testOutcomes.test1_1 = "Fail"
+    }
 
-if((gameWinner(testGameArray)).winner === "x"){
-  console.log ("Test 2 - Pass", gameWinner(testGameArray))
-  } else {
-  console.log ("Test 2 - Fail")
-  }
+  if((findWinner(tGameArray)).winner === "x"){
+    testOutcomes.test1_2 = "Pass"
+    } else {
+    testOutcomes.test1_2 = "Fail"
+    }
 
-if(typeof(gameWinner(testGameArray).how) == "object"){
-  console.log ("Test 3 - Pass")
-  } else {
-  console.log ("Test 3 - Fail", typeof(gameWinner(testGameArray).how))
-  }
+  if(typeof(findWinner(tGameArray).how) == "object"){
+    testOutcomes.test1_3 = "Pass"
+    } else {
+    testOutcomes.test1_3 = "Fail"
+    }
 
-  testGameArray =
+  tGameArray =
     [
       ["x", " ", " "],
-      [" ", "x", " "],
+      [" ", "o", " "],
       ["o", "o", "x"]
     ]
 
-  testGameArray =
+  if(findWinner(tGameArray).winner == ""){
+    testOutcomes.test2_1 = "Pass"
+    } else {
+    testOutcomes.test2_1 = "Fail"
+    }
+
+  tGameArray =
     [
       ["x", " ", " "],
       ["o", "o", "o"],
       ["o", "x", "x"]
     ]
 
-  tOutcome.gameWinner = tGameWinner
+  if(findWinner(tGameArray).winner == "o"){
+    testOutcomes.test3_1 = "Pass"
+    } else {
+    testOutcomes.test3_1 = "Fail"
+    }
 
-console.log(JSON.stringify(tOutcome))
+  if(JSON.stringify(findWinner(tGameArray).how) ==
+    JSON.stringify([[1,0], [1,1], [1,2]])){
+    testOutcomes.test3_2 = "Pass"
+    } else {
+    testOutcomes.test3_2 = "Fail"
+    }
+
+  tGameArray =
+    [
+      ["x", "o", " "],
+      [" ", "o", "o"],
+      ["o", "o", "x"]
+    ]
+
+  if(findWinner(tGameArray).winner == "o"){
+    testOutcomes.test4_1 = "Pass"
+    } else {
+    testOutcomes.test4_1 = "Fail"
+    }
+
+  tGameArray =
+    [
+      ["x", " ", "o"],
+      [" ", "o", "o"],
+      ["o", " ", "x"]
+    ]
+
+  if(findWinner(tGameArray).winner == "o"){
+    testOutcomes.test5_1 = "Pass"
+    } else {
+    testOutcomes.test5_1 = "Fail"
+    }
+
+  if(JSON.stringify(findWinner(tGameArray).how) ==
+    JSON.stringify([[0,2], [1,1], [2,0]])){
+    testOutcomes.test5_2 = "Pass"
+    } else {
+    testOutcomes.test5_2 = "Fail"
+    }
+
+  console.log(JSON.stringify(testOutcomes))
+}
+
+//t_findWinner()
