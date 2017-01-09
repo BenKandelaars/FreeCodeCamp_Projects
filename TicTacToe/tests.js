@@ -1,7 +1,7 @@
 
 function t_findWinner (){
 
-  let testOutcomes = {testFunc: findWinner}
+  let testOutcomes = {testFunc: "findWinner"}
 
   let tGameArray =
     [
@@ -10,19 +10,20 @@ function t_findWinner (){
       ["o", "o", " "]
     ]
 
-  if(typeof(findWinner(tGameArray)) === "object"){
+  let test = game.findWinner(tGameArray)
+  if(typeof(test) === "object"){
     testOutcomes.test1_1 = "Pass"
     } else {
     testOutcomes.test1_1 = "Fail"
     }
 
-  if((findWinner(tGameArray)).winner === "x"){
+  if(test.winner === "x"){
     testOutcomes.test1_2 = "Pass"
     } else {
     testOutcomes.test1_2 = "Fail"
     }
 
-  if(typeof(findWinner(tGameArray).how) == "object"){
+  if(typeof(test.how) == "object"){
     testOutcomes.test1_3 = "Pass"
     } else {
     testOutcomes.test1_3 = "Fail"
@@ -35,7 +36,9 @@ function t_findWinner (){
       ["o", "o", "x"]
     ]
 
-  if(findWinner(tGameArray).winner == ""){
+  test = game.findWinner(tGameArray)
+
+  if(test.winner == ""){
     testOutcomes.test2_1 = "Pass"
     } else {
     testOutcomes.test2_1 = "Fail"
@@ -48,13 +51,15 @@ function t_findWinner (){
       ["o", "x", "x"]
     ]
 
-  if(findWinner(tGameArray).winner == "o"){
+  test = game.findWinner(tGameArray)
+
+  if(test.winner == "o"){
     testOutcomes.test3_1 = "Pass"
     } else {
     testOutcomes.test3_1 = "Fail"
     }
 
-  if(JSON.stringify(findWinner(tGameArray).how) ==
+  if(JSON.stringify(test.how) ==
     JSON.stringify([[1,0], [1,1], [1,2]])){
     testOutcomes.test3_2 = "Pass"
     } else {
@@ -68,7 +73,10 @@ function t_findWinner (){
       ["o", "o", "x"]
     ]
 
-  if(findWinner(tGameArray).winner == "o"){
+  test = game.findWinner(tGameArray)
+
+
+  if(test.winner == "o"){
     testOutcomes.test4_1 = "Pass"
     } else {
     testOutcomes.test4_1 = "Fail"
@@ -81,13 +89,16 @@ function t_findWinner (){
       ["o", " ", "x"]
     ]
 
-  if(findWinner(tGameArray).winner == "o"){
+  test = game.findWinner(tGameArray)
+
+
+  if(test.winner == "o"){
     testOutcomes.test5_1 = "Pass"
     } else {
     testOutcomes.test5_1 = "Fail"
     }
 
-  if(JSON.stringify(findWinner(tGameArray).how) ==
+  if(JSON.stringify(test.how) ==
     JSON.stringify([[0,2], [1,1], [2,0]])){
     testOutcomes.test5_2 = "Pass"
     } else {
