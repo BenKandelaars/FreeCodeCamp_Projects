@@ -29,6 +29,7 @@ function displayUpdate(){
   // Update the display using state variable.
 
   var displayCur = document.getElementById("displayCur")
+  console.log("DisplayCur = ", displayCur)
   displayCur.innerHTML = state.displayCur
 
   var displayMem = document.getElementById("displayMem")
