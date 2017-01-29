@@ -27,11 +27,13 @@ let game = {
 
   resetGameBoard: function(){
 
-    for(i=0; i < elements.length; i++){
-        elements[i].innerHTML = "";
+    for(i=0; i < this.elements.length; i++){
+        this.elements[i].innerHTML = "";
     }
 
     this.newGameBoard()
+    return
+
   },
 
 
@@ -220,6 +222,7 @@ game.computerTurn = function (){
   console.log("Gameboard = ", this.gameBoard)
 
   let moves = this.possibleMoves(this.gameBoard)
+
   let winningMove = game.winningNextMove(this.gameBoard)
   let moveY = 5
   let moveX = 5
@@ -275,13 +278,66 @@ game.checkGameEnd = function (){
 
   console.log("winner = ", winner)
   if (winner.winner){
-    console.log("Winner is = ", winner.winner)
-    return
-  }
 
-  if (this.possibleMoves(this.gameBoard).length == 0){
-    console.log("Out of moves")
+    let nextGame = "Play Again?"
+    let congratulations = "";
+
+    $(".menu").toggleClass("menu-dropDown")
+
+//    $(".menu").html("<p>Computer won. " + nextGame + "</p>")
+
+    if (winner.winner == game.playerOne){
+      congratulations = "<p>You won</p>"
+    } else {
+      congratulations = "<p>Computer won</p>"
+    }
+
+    congratulations += "</br><p>Play Again?</p>"
+
+    $(".textFeedback").html(congratulations)
+    $("article").html("<button type=\"button\" name=\"again\">Yes</button>")
+
+    $("button").click(function(e){
+
+      $(".menu").toggleClass("menu-dropDown");
+
+      game.resetGameBoard()
+      game.startPlayer()
+
+      console.log("Player turn at start = ", game.playerTurn)
+
+      if (game.playerTurn === false){game.computerTurn()}
+
+
+    })
     return
+
+  };
+
+  if (this.possibleMoves(this.gameBoard).length === 0){
+
+    $(".menu").toggleClass("menu-dropDown")
+
+    let msg = "<p>Draw</p>"
+
+    msg += "</br><p>Play Again?</p>"
+
+    $(".textFeedback").html(msg)
+    $("article").html("<button type=\"button\" name=\"again\">Yes</button>")
+
+    $("button").click(function(e){
+
+    $(".menu").toggleClass("menu-dropDown");
+
+      game.resetGameBoard()
+      game.startPlayer()
+
+      //console.log("Player turn at start = ", game.playerTurn)
+
+      if (game.playerTurn === false){game.computerTurn()}
+      //console.log("Out of moves")
+
+    })
   }
 
   if (this.playerTurn === true){
@@ -295,13 +351,40 @@ game.checkGameEnd = function (){
 
 game.init = function () {
 
+  $(".menu").toggleClass("menu-dropDown");
+
   this.newGameBoard()
   this.listeners()
-  this.startPlayer()
 
-  console.log("Player turn at start = ", game.playerTurn)
+  $("button").click(function(e){
 
-  if (this.playerTurn === false){this.computerTurn()}
+    game.playerOne = e.target.innerHTML;
+
+    game.playerOne == "X" ? game.computerPiece = "O" : game.computerPiece = "X"
+
+    $(".menu").toggleClass("menu-dropDown")
+
+    game.startPlayer()
+
+    console.log("Player turn at start = ", game.playerTurn)
+
+    if (game.playerTurn === false){game.computerTurn()}
+
+  })
+
+
 }
 
 game.init()
+
+
+$(document).ready(function(){
+
+  $(".hamburger").click(function(){
+    $(this).toggleClass("is-active");
+    $(".menu").toggleClass("menu-dropDown")
+  })
+
+
+
+});
