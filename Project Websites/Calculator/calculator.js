@@ -1,7 +1,6 @@
 // new comments to add to the git repo
 
-var state = {};
-state = {
+var state = {
   // default value to display is "0" in both current & display memory.
   displayCur: "0",
   maxDisplayCurLen: 10,
@@ -30,6 +29,7 @@ function displayUpdate(){
   // Update the display using state variable.
 
   var displayCur = document.getElementById("displayCur")
+  console.log("DisplayCur = ", displayCur)
   displayCur.innerHTML = state.displayCur
 
   var displayMem = document.getElementById("displayMem")
