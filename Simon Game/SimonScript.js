@@ -1,4 +1,10 @@
 
+// next tasks
+// update #slideThree to be onSwitch to make code clearer
+// create state object for start, sequence, place in sequence
+// refactor active css to be activated through javascript.
+// events should then check if current game is underway,
+// link to game process code
 
 
 function init (){
@@ -14,26 +20,29 @@ function init (){
     // game switched on
     if(e.target.checked){
 
-      // sounds on
+      // counter on
+      var counter = $(".counterText")
+      counter.text("00")
+
+      // strictMode check box enabled
+      $("#strictMode").off()
+
+      // event handler for start button
+      $(".btn-start").on("click", function(){
+
+        // move into state object      
+        var strict = $("#strictMode")[0].checked
+      })
+
+      // action on click for buttons
       buttons.on("click", function(e){
         audio[e.target.value].play()
       })
 
-      var counter = $(".counterText")
-      counter.text("00")
-
-      $("#strictMode").off()
-
-      // start button pressed
-      $(".btn-start").on("click", function(){
-
-        var strict = $("#strictMode")[0].checked
-        console.log(strict)
-      })
 
     } else {
 
-      // turn off
+      // turn game off
       buttons.off()
       $(".counterText").text("")
       strictDisabled()
