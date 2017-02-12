@@ -1,5 +1,5 @@
 <head>
-
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -10,7 +10,7 @@
       </div>
       <div class="">
         <div class="slideThree">
-          <input type="checkbox" value="None" id="slideThree" name="check" checked />
+          <input type="checkbox" value="None" id="slideThree" name="check" />
           <label for="slideThree"></label>
         </div>
       </div>
@@ -18,22 +18,45 @@
 
     <section class="controls">
       <div class="controlBox">
+        <button type="button" name="button" class="btn-start"></button>
         <p>Start</p>
       </div>
       <div class="controlBox">
-        <p>Strict</p>
+          <input type="checkbox" name="strict" value="None" id="strictMode" />
+          <label for="strict">Strict</label>
       </div>
       <div class="controlBox">
+        <div class="counter">
+          <p class="counterText"></p>
+        </div>
         <p>Counter</p>
       </div>
     </section>
     <section class="pushButtons">
-      <button type="button" name="button" class="green" value="green"></button>
-      <button type="button" name="button" class="red" value="red"></button>
-      <button type="button" name="button" class="blue" value="blue"></button>
-      <button type="button" name="button" class="yellow" value="yellow"></button>
-    </section>
+      <button type="button" name="button" class="green" value="0"></button>
+      <button type="button" name="button" class="red" value="1"></button>
+      <button type="button" name="button" class="blue" value="2"></button>
+      <button type="button" name="button" class="yellow" value="3"></button>
+
+      <audio id="sound_1">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" type="audio/wav">
+      </audio>
+      <audio id="sound_2">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" type="audio/wav">
+      </audio>
+      <audio id="sound_3">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" type="audio/wav">
+      </audio>
+      <audio id="sound_4">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" type="audio/wav">
+      </audio>
+      </section>
   </main>
 
-  <script type="text/javascript" src="SimonScript.js"></script>
+  <script
+			  src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+			  integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+			  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="simonScript.js"></script>
+
 </body>
