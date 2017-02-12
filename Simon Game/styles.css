@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   color: darkgrey;
+  font-family: 'Orbitron', sans-serif;
 }
 
 main {
@@ -33,6 +34,56 @@ h1 {
   align-content: stretch;
 }
 
+.controlBox {
+  background-color: ;
+  text-align: center;
+}
+
+button:focus {
+  outline: none;
+}
+
+.btn-start {
+  background-color: purple;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  border: 0px;
+}
+
+.btn-start:active {
+  box-shadow: inset 0px 0px 15px rgba(255,255,255, 0.6);
+  transform: translateY(5px);
+}
+
+#strictMode {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+
+}
+
+#strictMode + label {
+  display: block;
+}
+
+#strictMode:checked + label {
+ color: red;
+}
+
+.counter {
+  width: 70px;
+  height: 40px;
+  border: 2px solid red;
+  margin-bottom: 5px;
+  font-size: 30px;
+  color: red;
+  letter-spacing: 5px;
+  padding-left: 5px;
+}
+
+
 .pushButtons {
   width: 100%;
   height: 70%;
@@ -50,16 +101,12 @@ h1 {
   border: none;
 }
 
-button:focus {
-  outline: none;
-}
-
 .green {
   background-color: rgba(34,139,34, 1);
   transition: all 0.1s linear;
 }
 
-.green:active {
+.green.turnOn:active {
   background-color: rgba(34,139,34, 0.8);
 }
 
@@ -68,7 +115,7 @@ button:focus {
   transition: all 0.1s linear;
 }
 
-.red:active {
+.red.turnOn:active {
   background-color: rgba(255,0,0,0.7);
 }
 
@@ -77,7 +124,7 @@ button:focus {
   transition: all 0.1s linear;
 }
 
-.blue:active {
+.blue.turnOn:active {
   background-color: rgba(	65,105,225, 0.8);
 }
 
@@ -86,7 +133,7 @@ button:focus {
   transition: all 0.1s linear;
 }
 
-.yellow:active {
+.yellow.turnOn:active {
   background-color: rgba(255,220,0,0.4);
 }
 
@@ -123,7 +170,7 @@ button:focus {
     font-weight: bold;
   }
 
-label {
+.slideThree label {
     display: block;
     width: 34px;
     height: 20px;
@@ -140,15 +187,16 @@ label {
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
   }
 
-input[type=checkbox] {
+.slideThree input[type=checkbox] {
     visibility: hidden;
 }
 
-input[type=checkbox]:checked + label {
+.slideThree input[type=checkbox]:checked + label {
       left: 43px;
 }
 /* end .slideThree */
 
+/*
 .btn {
   float: left;
   margin: 5px 8px 5px 6px;
@@ -167,3 +215,4 @@ input[type=checkbox]:checked + label {
   box-shadow: 0 0px black;
   transform: translateY(5px);
 }
+*/
