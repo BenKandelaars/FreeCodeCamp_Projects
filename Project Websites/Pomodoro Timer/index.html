@@ -1,0 +1,51 @@
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+  <link rel="stylesheet" href="pomodoro.css">
+</head>
+
+<body>
+  <article class="shell">
+
+    <section class="heading">
+      <h1>Pomodoro Timer</h1>
+      <p>FreeCodeCamp</p>
+    </section>
+
+    <section class="settings_box">
+      <div class="settings">
+        <h4>Break</h4>
+        <button type="button" name="button" class="u_textright" id="breakAdd">+</button>
+        <p class="settings_number" id="timerBreak">2</p>
+        <button type="button" name="button" class="u_textleft" id="breakMinus">&minus;</button>
+      </div>
+    </section>
+
+    <section class="settings_box">
+      <div class="settings">
+        <h4>Timer</h4>
+        <button type="button" name="button" class="u_textright" id="timerAdd">+</button>
+        <p class="settings_number" id="timerLength">2</p>
+        <button type="button" name="button" class="u_textleft" id="timerMinus">&minus;</button>
+      </div>
+    </section>
+
+    <section class="timer">
+      <button type="button" class="circle" id="timerCircle">
+        <h2 id="timerAction">Error</h2>
+        <p class="circle_time" id="timerTime">2</p>
+      </button>
+    </section>
+
+    <section class="footer">
+      <button type="button" name="button" id="timerReset">Reset</button>
+    </section>
+
+  </article>
+
+  <audio id="alarm">
+   <source src="http://soundbible.com/grab.php?id=1745&type=mp3" type="audio/wav" id="">
+  </audio>
+
+  <script src="pomodoro.js "type="text/javascript"></script>
+</body>

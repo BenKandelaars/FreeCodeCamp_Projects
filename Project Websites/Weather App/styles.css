@@ -1,0 +1,106 @@
+* {
+  margin: 0px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+header {
+  height: 100vh;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+.imgPrep {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  opacity: 0;
+}
+
+.aniFadeOut {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 5s;
+}
+
+.aniFadeIn {
+  opacity: 0.5;
+  transition-property: opacity;
+  transition-duration: 5s;
+}
+
+p {
+  font-size: 1rem;
+}
+
+#locationInput {
+  width: 250px;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid #0074d9;
+  border-radius: 20px;
+  text-align: left;
+}
+
+#locationInput:focus {
+  border: 2px solid green;
+}
+
+fieldset {
+  position: relative;
+  border: 0px solid grey;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.spacer {
+  margin: 0px 15px;
+}
+
+fieldset p {
+  font-size: 2rem;
+  display: inline-block;
+  margin: 0px;
+  position: relative;
+  top: -3px;
+  left: 3px;
+}
+
+::-webkit-input-placeholder { text-align: center; }
+::-moz-placeholder { text-align: center; } /* firefox 19+ */
+:-ms-input-placeholder { text-align: center; } /* ie */
+input:-moz-placeholder { text-align: center; }
+
+input[type=radio] {
+  width: 2rem;
+  height: 2rem;
+  display: inline;
+}
+
+#temp {
+  margin: 0px auto 0px auto;
+  padding: 15px 0px 0px 0px;
+  font-size: 4rem;
+ }
+
+.u-border {
+  border: 5px solid red;
+}
+
+.u-relative {
+  position: relative;
+  }
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-visable {
+  opacity: 0.5;
+}
