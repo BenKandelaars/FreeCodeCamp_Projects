@@ -42,7 +42,7 @@ h1 {
 }
 
 .win {
-  color: green;
+  animation: winSequence 3s ease-in-out;
 }
 
 
@@ -235,6 +235,18 @@ button:focus {
   background-color: rgba(255,255,0,1);
 }
 /* end Game Buttons */
+
+
+ /* Animations */
+
+ @keyframes winSequence {
+  15% {color: blue}
+  30% {color: red}
+  45% {color: green}
+  60% {color: orange}
+  75% {color: purple}
+  88% {color: red}
+}
 
 /* superflous code
 .btn {

@@ -1,10 +1,5 @@
 
 // next tasks
-// create winning sequence in the .win class on css (animation of rainbow color for SIMON logo)
-// build in strict mode - to reset if you get it wrong
-// Notify of winning - build in css flashin !! in count section when you make an error (animation of display: none)
-    // User Story: If I press the wrong button, I am notified that I have done so, and that series
-    // of button presses starts again to remind me of the pattern so I can try again.
 // temp of game speeds up on the 5th, 9th and 13th step
 
 
@@ -21,11 +16,25 @@ function winSequence(){
 }
 
 function nextEntry(){
-  return Math.floor(Math.random()*4)
+  let randomNum = Math.floor(Math.random()*4)
+
+  if (gameState.sequence.length == 1) {
+
+    let calledOnce = false
+    if(gameState.sequence[0] == randomNum && calledOnce == false) {
+        calledOnce == true
+      return nextEntry()
+    } else {
+      return randomNum
+    }
+
+  } else {
+    return randomNum
+  }
 }
 
 function updateCounter(){
-  console.log("Sequence = ", gameState.sequence)
+//  console.log("Sequence = ", gameState.sequence)
 
   let count = gameState.sequence.length.toString()
   if (count.length == 1){
@@ -33,6 +42,27 @@ function updateCounter(){
   }
 
   $(".counterText").text(count)
+}
+
+function counterFlash (){
+  let counter = $(".counterText")
+  let currentCounter = counter.text()
+
+  counter.text("--")
+  let flashCounter = 0
+
+  let flashInterval = setInterval(function(){
+
+    (counter.text() == "--") ? counter.text("  ") : counter.text("--")
+
+    if (flashCounter == 4){
+      counter.text(currentCounter)
+      clearInterval(flashInterval)
+    }
+
+    flashCounter++
+
+  }, 200)
 }
 
 function playSequence(){
@@ -67,41 +97,90 @@ function start (){
   // then await a response from the user
 }
 
+function updateSpeed(){
+  let seq = gameState.sequence;
+
+  if (seq.length > 13){
+    gameState.btnDownTime = 400
+    gameState.btnPauseTime = 50
+    return
+  }
+
+  if (seq.length > 9){
+    gameState.btnDownTime = 500
+    gameState.btnPauseTime = 80
+    return
+  }
+
+  if (seq.length > 2){
+    gameState.btnDownTime = 600
+    gameState.btnPauseTime = 90
+    return
+  }
+
+}
+
 function checkEntry (input){
 
   // console.log("checking entry of ", input)
-
   let seqPlace = gameState.sequencePlace
   let expected = gameState.sequence[seqPlace]
 
-  // player input correct
-  if (input === expected){
+  //console.log("input = ", input)
+  //console.log("expected = ", expected)
+  //console.log("seqPlace = ", seqPlace)
 
-    if (seqPlace + 1 < gameState.sequence.length){
+  function inputCorrect (){
+
+    let seq = gameState.sequence;
+
+    if (seqPlace + 1 < seq.length){
       gameState.sequencePlace++
       gameState.gameButtonsDisable = false
-    } else {
 
+    } else if (seq.length == 20){
 
-      if (gameState.sequence.length == 2){
         winSequence()
         reset()
         $(".counterText").text("00")
+
       } else {
-        gameState.sequence.push(nextEntry())
-        updateCounter()
-        playSequence()
-      }
+
+        setTimeout(function () {
+          seq.push(nextEntry())
+          gameState.sequencePlace = 0
+          console.log (gameState.sequence)
+
+          updateSpeed()
+          updateCounter()
+
+          playSequence()
+
+        }, 500)
     }
 
-  //player input incorrect
-  } else {
-
-    setTimeout(function (){
-      gameState.sequencePlace = 0
-      playSequence()
-    }, 200)
   }
+
+  function inputWrong () {
+
+    if (gameState.strictMode == true || gameState.gameErrors == 2){
+      $(".counterText").text("00")
+      counterFlash()
+      reset()
+    } else {
+
+      counterFlash()
+      gameState.gameErrors++
+
+      setTimeout(function (){
+        gameState.sequencePlace = 0
+        playSequence()
+      }, 1000)
+    }
+  }
+
+  (input === expected) ? inputCorrect() : inputWrong()
+
 }
 
 
@@ -130,10 +209,13 @@ function playGameButton (buttonNo, callback, btnDownTime, btnPauseTime) {
 function reset (){
   $(".counterText").text("")
   gameState.start = false
-  gameState.sequence = []
+
   gameState.btnDownTime = 750
   gameState.btnPauseTime = 100
   gameState.gameButtonsDisable = false
+  gameState.gameErrors = 0
+  gameState.sequence = []
+  gameState.sequencePlace = 0
 
 }
 
@@ -169,7 +251,7 @@ function init (){
       }
 
       gameState.start = true;
-      console.log("Started game")
+      //console.log("Started game")
       start()
     })
 
