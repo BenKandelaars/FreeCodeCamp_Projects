@@ -1,0 +1,29 @@
+body {
+  background-color: black;
+  margin: 10px;
+  }
+
+h1, h3 {
+  color: white;
+}
+
+li {
+  font-size: 1.2em;
+}
+
+p {
+  font-size: 1.2em;
+  color: #fff;
+  }
+
+ul {
+  color: white;
+  list-style-position: outside;
+    padding: 10px
+
+}
+
+#red_rocket {
+  color: #9a0f02;
+  font-size: 1em;
+}
