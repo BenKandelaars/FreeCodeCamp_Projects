@@ -1,5 +1,8 @@
 // new comments to add to the git repo
 
+// this is used as a global variable
+let el
+
 var state = {
   // default value to display is "0" in both current & display memory.
   displayCur: "0",
@@ -29,7 +32,7 @@ function displayUpdate(){
   // Update the display using state variable.
 
   var displayCur = document.getElementById("displayCur")
-  console.log("DisplayCur = ", displayCur)
+  //console.log("DisplayCur = ", displayCur)
   displayCur.innerHTML = state.displayCur
 
   var displayMem = document.getElementById("displayMem")
@@ -62,7 +65,7 @@ function calculate(){
         parseFloat(state.activeMem) / parseFloat(state.displayCur)
        break
   }
-  console.log(state.displayCur.toString().length)
+  // console.log(state.displayCur.toString().length)
   if(state.displayCur.toString().length > state.maxDisplayCurLen){
     state.displayCur = "Maxed out"
   }
@@ -134,7 +137,7 @@ function isEquals(){
   // complete a calculation first before updating operator.
   if (state.activeMem !== "0" && state.operator
     && state.displayCur !== "0"){
-      console.log("calculate fired")
+      // console.log("calculate fired")
     calculate()
     }
 
@@ -152,10 +155,10 @@ function setListener (){
   // is received then it cascades the response. Input is only ever
   // a single button press.
 
-  document.getElementById("inputs")
-    .addEventListener("click", function(e){
+  let inputs = document.getElementById("inputs")
+  inputs.addEventListener("click", function(e){
 
-    el = e.srcElement.name
+    el = e.target.name
 
     // For error checking purposes record button pressed
     state.keypress = el
@@ -202,10 +205,10 @@ function setListener (){
       state.displayCur = "0"
     }
 
-    console.log("Before update = ", JSON.stringify(state))
+    // console.log("Before update = ", JSON.stringify(state))
     state.memUpdate()
     displayUpdate()
-    console.log("After update = ", JSON.stringify(state))
+    // console.log("After update = ", JSON.stringify(state))
 
   })
 }

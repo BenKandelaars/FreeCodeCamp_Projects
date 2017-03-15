@@ -15,25 +15,17 @@
 </head>
 
 <body>
-
-  <!--
-  <div class="hamburger" id="hamburger">
-    <span class="line"></span>
-    <span class="line"></span>
-    <span class="line"></span>
-  </div>
--->
-
-  <div class="menu">
-    <div class="textFeedback">
+    <div class="menu">
+      <div class="textFeedback">
+      </div>
+      <article class="selection">
+        <button class="btn_menu" type="button" name="playerIsX">X</button>
+        <button class="btn_menu" type="button" name="playerIsO">O</button>
+      </article>
     </div>
-    <article class="selection">
-      <button class="startPiece" type="button" name="playerIsX">X</button>
-      <button class="startPiece" type="button" name="playerIsO">O</button>
-    </article>
-</div>
 
-  <main id="board">
+  <main>
+    <div id="board">
 
     <div class="square topBorder" data-pos="0,0"></div>
     <div class="square topBorder" data-pos="0,1"></div>
@@ -46,8 +38,9 @@
     <div class="square" data-pos="2,0"></div>
     <div class="square" data-pos="2,1"></div>
     <div class="square rightBorder" data-pos="2,2"></div>
-
+  </div>
   </main>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="tictactoe.js" type="text/javascript"></script>
   <script src="tests.js" type="text/javascript"></script>

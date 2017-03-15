@@ -3,15 +3,21 @@
 }
 
 body {
-  height: 96vh;
-  width: 96vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
+  width: 90%;
   background-color: white;
+  margin: auto auto;
 }
 
 main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#board {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -48,22 +54,29 @@ main {
 }
 
 .menu {
-  width: 360px;
-  height: 360px;
-  background-color: #fe809c;
-  position: fixed;
+  max-width: 300px;
+  width: 66vw;
+  max-height: 300px;
+  height: 66vw;
+  position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  top: -360px;
-  transition: all 0.8s ease-in-out;
+  top: 50%;
+  background-color: #fe809c;
+  opacity: 0;
+  transform: translate(-50%, -100vh);
   display: flex;
   align-content: center;
   justify-content: center;
   flex-direction: column;
 }
 
+.menu_aniSetting {
+  transition: all 0.8s ease-in-out;
+}
+
 .textFeedback {
   text-align: center;
+  font-size: 2rem;
 }
 
 .menu > article {
@@ -72,10 +85,9 @@ main {
   justify-content: center;
 }
 
-
-
 .menu-dropDown {
-  top: calc((100vh - 360px)/2) ;
+  transform: translate(-50%, -50%);
+  opacity: 1
 }
 
 button {
@@ -87,8 +99,12 @@ button {
   margin: auto;
 }
 
-.startPiece {
+.btn_menu {
   font-size: 150px;
+}
+
+.btn_playAgain {
+  font-size: 60px;
 }
 
 button:focus {
@@ -108,56 +124,22 @@ button:focus {
     top: -80vw;
   }
 
+/*
   .menu-dropDown {
     top: calc((100vh - 80vw) / 2);
   }
-
+*/
   button {
     font-size: 10vw;
     margin: auto;
   }
 
-  .startPiece {
+  .btn_menu {
     font-size: 33vw;
   }
 
-}
+  .btn_playAgain {
+    font-size: 20vw;
+  }
 
-.hamburger .line{
-  width: 50px;
-  height: 5px;
-  background-color: black;
-  display: block;
-  margin-top: 8px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-.hamburger {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-}
-
-.hamburger:hover{
-  cursor: pointer;
-}
-
-#hamburger.is-active .line:nth-child(2){
-  opacity: 0;
-}
-
-#hamburger.is-active .line:nth-child(1){
-  -webkit-transform: translateY(13px) rotate(45deg);
-  -ms-transform: translateY(13px) rotate(45deg);
-  -o-transform: translateY(13px) rotate(45deg);
-  transform: translateY(13px) rotate(45deg);
-}
-
-#hamburger.is-active .line:nth-child(3){
-  -webkit-transform: translateY(-13px) rotate(-45deg);
-  -ms-transform: translateY(-13px) rotate(-45deg);
-  -o-transform: translateY(-13px) rotate(-45deg);
-  transform: translateY(-13px) rotate(-45deg);
 }
