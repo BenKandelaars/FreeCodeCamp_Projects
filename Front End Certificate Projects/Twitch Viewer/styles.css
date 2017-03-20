@@ -1,6 +1,96 @@
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
 body {
+  background-color: darkseagreen;
+}
+
+main {
+  width: 300px;
+  background-color: black;
+  margin: auto;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.heading {
+  padding: 10px;
+}
+
+h1 {
+  color: blue;
+  outline: white;
+  font-size: 5rem;
+  text-shadow:
+    -1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px -1px 0 #fff,
+    1px 1px 0 #fff;
+}
+
+ul {
+  min-height: 50px;
   width: 100%;
-  height: 100vh;
-  background-color: lightgreen;
+  margin: auto;
+  border: 2px darkgrey solid;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.streamer {
+  list-style: none;
+  height: 50px;
+  border: 2px lightgrey solid;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+  color: white;
+}
+
+.online {
+  background-color: green;
+}
+
+li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+  background-color: violet;
+  margin: 0px 10px;
+  flex-shrink: 0;
+}
+
+a[href="#"] {
+  color: white;
+  text-decoration: none;
+}
+
+.streamer_info_container {
+  flex-grow: 1;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
 }
+
+.streamer_info {
+  display: block;
+  white-space: nowrap;
+  /* transition: all 5s; */
+}
+
+/*
+.streamer_info:hover {
+  transform: translateX(calc(-50%));
+}
+*/
