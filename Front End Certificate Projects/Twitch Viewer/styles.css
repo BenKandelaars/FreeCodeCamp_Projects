@@ -52,6 +52,10 @@ ul {
   color: white;
 }
 
+.inactive {
+  background-color: firebrick;
+}
+
 .online {
   background-color: green;
 }
@@ -61,16 +65,27 @@ li:last-child {
 }
 
 .logo {
-  width: 45px;
-  height: 45px;
-  background-color: violet;
+  width: 40px;
+  height: 40px;
+  background-color: mediumslateblue;
   margin: 0px 10px;
+  border-radius: 5px;
   flex-shrink: 0;
 }
 
-a[href="#"] {
+.logo > img {
+  width: 40px;
+  height: 40px;
+}
+
+a {
   color: white;
   text-decoration: none;
+}
+
+.online > * > a {
+  color: blue;
+  text-decoration: underline;
 }
 
 .streamer_info_container {

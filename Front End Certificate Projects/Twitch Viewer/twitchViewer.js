@@ -1,23 +1,7 @@
-/*
-function displayData(data){
+// add section for checking the channel object to get the link
 
-  console.log(data)
-  if (data.stream === null){
-
-    return "Channel not on line"
-
-  } else {
-
-    console.log("online & playing ", data.stream.game)
-
-    let channelURL = data.stream.channel.url
-    let logo = data.stream.channel.logo
-    let game = data.stream.game
-  }
-}
-
-*/
-let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin"]
+let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck",
+"habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"]
 
 const $displayList = $(".listContainer")
 let $listItem = $("<li class=\"streamer\"></li>")
@@ -36,68 +20,6 @@ function listUser(channel){
 
   $displayList.append($listItem)
 
-}
-
-
-function updateUserRegistered(data){
-
-  console.log(data.response)
-
-/*
-  let $item = $displayList.find("[data='" + data.channel + "']")
-  let $streamerInfo = $item.find("p")
-
-  let online = !!data.response.stream
-
-  // User isn't currently streaming
-  if (!online){
-    if ($item.hasClass("online")){$item.removeClass("online")}
-    $streamerInfo.text("Off line")
-  } else {
-
-  // User is streaming content
-  $streamerInfo.text(data.response.stream.game)
-
-  if (!$item.hasClass("online")){
-    $item.addClass("online")
-  }
-
-  //Update link href
-  let $link = $item.find("a")
-  $link.attr("href", data.response.stream.channel.url)
-  $link.attr("target", "_blank")
-  }
-
-  */
-}
-
-function updateUserStreaming(data){
-
-  console.log(data.response)
-
-  let $item = $displayList.find("[data='" + data.channel + "']")
-  let $streamerInfo = $item.find("p")
-
-  let online = !!data.response.stream
-
-  // User isn't currently streaming
-  if (!online){
-    if ($item.hasClass("online")){$item.removeClass("online")}
-    $streamerInfo.text("Off line")
-  } else {
-
-  // User is streaming content
-  $streamerInfo.text(data.response.stream.game)
-
-  if (!$item.hasClass("online")){
-    $item.addClass("online")
-  }
-
-  //Update link href
-  let $link = $item.find("a")
-  $link.attr("href", data.response.stream.channel.url)
-  $link.attr("target", "_blank")
-  }
 }
 
 let twitchAPICall = (function (window){
@@ -120,7 +42,7 @@ let twitchAPICall = (function (window){
         window[channel] = function (response){
 
           script.remove()
-          delete window[channel]
+          delete window[channel];
 
           resolve({
             channel: channel,
@@ -132,8 +54,80 @@ let twitchAPICall = (function (window){
   }
 })(window)
 
-let checkChannel = twitchAPICall("streams")
-let checkUser = twitchAPICall("users")
+let checkChannel = twitchAPICall("channels")
+let checkStreaming = twitchAPICall("streams")
+
+
+function updateUserRegistered(data){
+
+  let $item = $displayList.find("[data='" + data.channel + "']")
+
+  // User not known or closed account
+  if (data.response.error) {
+
+    let $streamerInfo = $item.find("p")
+
+    $streamerInfo.text(data.response.message)
+    $item.addClass("inactive")
+
+    return false
+
+  } else {
+
+    // User known
+
+    let $logo = $item.find(".logo")
+    let logoSource = data.response.logo
+
+    $logo.html("<img src=\"" + logoSource + "\">")
+
+    let $link = $item.find("a")
+    $link.attr("href", data.response.url)
+    $link.attr("target", "_blank")
+
+    return {
+      channel: data.channel
+    }
+  }
+}
+
+
+function updateUserStreaming(data){
+
+  console.log(data)
+  let $item = $displayList.find("[data='" + data.channel + "']")
+
+  let $streamerInfo = $item.find("p")
+
+  let online = !!data.response.stream
+
+  // User isn't currently streaming
+  if (!online){
+    if ($item.hasClass("online")){$item.removeClass("online")}
+    $streamerInfo.text("Off line")
+
+  } else {
+
+  // User is streaming content
+  $streamerInfo.text(data.response.stream.channel.status)
+
+  if (!$item.hasClass("online")){
+    $item.addClass("online")
+  }
+
+  //Update link href
+  let $link = $item.find("a")
+  $link.attr("href", data.response.stream.channel.url)
+  $link.attr("target", "_blank")
+  }
+}
+
+function updateChannelLink(){
+  //Update link href
+  let $link = $item.find("a")
+  $link.attr("href", data.response.stream.channel.url)
+  $link.attr("target", "_blank")
+}
 
 function initList (channels){
 
@@ -144,22 +138,17 @@ function initList (channels){
 
   channels.map(function (channel){
 
-    checkUser(channel)
-    .then((data) => {
-      return updateUserRegistered(data)
-    })
-  })
-
-/*
-  channels.map(function (channel){
-
     checkChannel(channel)
     .then((data) => {
-      return updateUserStreaming(data)
+      return updateUserRegistered(data);
+    })
+    .then((registered) => {
+      return !registered ? null : checkStreaming(registered.channel)
+    })
+    .then((data) => {
+      return !data ? null : updateUserStreaming(data)
     })
   })
-
-*/
 }
 
 initList(channels)
