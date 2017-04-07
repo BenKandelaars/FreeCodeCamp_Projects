@@ -1,0 +1,100 @@
+body {
+  background-color: #673AB7;
+}
+
+.title {
+	padding: 10px 30px;
+	text-align: center;
+}
+
+h1 {
+	font-size: 4rem;
+}
+
+main {
+  width: 1000px;
+	margin: 0 auto 0 auto;
+}
+
+.quote {
+  position: relative;
+	border-radius: 50px;
+	padding: 0 2rem;
+  text-align: center;
+  border: solid 5px;
+  height: 300px;
+	background-color: teal;
+}
+
+.quote_text {
+  font-size: 3rem;
+  }
+
+.quote_author {
+  position: absolute;
+	top: 75%;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 1.5rem;
+}
+
+
+.twitterstyle {
+ color: #00aced;
+}
+
+.twit-position {
+  position: absolute;
+	left: 20px;
+	bottom: 20px;
+	}
+
+.twit-background {
+	position: absolute;
+	height:40px;
+	width: 40px;
+	background-color: white;
+	left: 30px;
+	bottom: 30px;
+}
+
+.section-2 {
+	padding: 50px;
+	}
+
+button {
+  background: #26A6F6;
+  color: black;
+  border-radius: 10px 10px 10px 10px;
+  font-size: 1.5rem;
+  }
+
+
+
+.centre {
+	margin: auto;
+	display: block;
+}
+
+footer {
+  max-height: 5vh;
+ }
+
+.u-border {
+	border: 5px solid black;
+}
+
+@media screen and (max-width: 600px){
+  .quote_text {
+    font-size: 2em;
+  }
+
+  button {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 300px){
+  .quote_text {
+    font-size: 1.5em;
+  }
+}
