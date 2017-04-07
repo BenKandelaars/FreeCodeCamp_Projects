@@ -15,6 +15,7 @@ let game = {
   computerPiece: "O",
   singlePlayer: true,
   playerTurn: true,
+  boardEnabled: false,
 
   newGameBoard: function(){
     this.gameBoard =
@@ -194,19 +195,25 @@ let game = {
 game.listeners = function () {
   for(i=0; i < this.elements.length; i++){
     this.elements[i].addEventListener("click", function (event){
-      let el = event.target
 
-      if (game.singlePlayer && game.playerTurn){
-        el.innerHTML = game.playerOne
+      if (game.boardEnabled === true){
+        game.boardEnabled = false;
 
-        let cellRef = el.dataset.pos
-        let y = parseInt(cellRef.slice(0,1))
-        let x = parseInt(cellRef.slice(2,3))
+        let el = event.target
 
-        game.playerTurn = false
-        game.gameBoard[y][x] = game.playerOne
+        if (game.singlePlayer && game.playerTurn){
+          el.innerHTML = game.playerOne
 
-        game.checkGameEnd()
+          let cellRef = el.dataset.pos
+          let y = parseInt(cellRef.slice(0,1))
+          let x = parseInt(cellRef.slice(2,3))
+
+          game.playerTurn = false
+          game.gameBoard[y][x] = game.playerOne
+
+          game.checkGameEnd()
+
+        }
       }
     })
   }
@@ -263,11 +270,10 @@ game.computerTurn = function (){
       el.innerHTML = this.computerPiece
     }
   }
+  this.playerTurn = true;
+  this.checkGameEnd()
 
   console.log("computer go finished")
-  this.playerTurn = true;
-
-  this.checkGameEnd()
 
 }
 
@@ -278,6 +284,8 @@ game.checkGameEnd = function (){
 
   console.log("winner = ", winner)
   if (winner.winner){
+
+    game.boardEnabled = false
 
     let nextGame = "Play Again?"
     let congratulations = "";
@@ -292,10 +300,10 @@ game.checkGameEnd = function (){
       congratulations = "<p>Computer won</p>"
     }
 
-    congratulations += "</br><p>Play Again?</p>"
+    congratulations += "<p>Play Again?</p>"
 
     $(".textFeedback").html(congratulations)
-    $("article").html("<button type=\"button\" name=\"again\">Yes</button>")
+    $(".selection").html("<button type=\"button\" class=\"btn_playAgain\" name=\"again\">Yes</button>")
 
     $("button").click(function(e){
 
@@ -306,51 +314,70 @@ game.checkGameEnd = function (){
 
       console.log("Player turn at start = ", game.playerTurn)
 
-      if (game.playerTurn === false){game.computerTurn()}
+      setTimeout(function(){
 
+        if (game.playerTurn === false) {
+          game.computerTurn()
+        } else {
+          game.boardEnabled = true;
+        }
+      }, 1000)
 
     })
-    return
-
-  };
-
-  if (this.possibleMoves(this.gameBoard).length === 0){
+  } else if (this.possibleMoves(this.gameBoard).length == 0){
 
     $(".menu").toggleClass("menu-dropDown")
 
     let msg = "<p>Draw</p>"
 
-    msg += "</br><p>Play Again?</p>"
+    msg += "<p>Play Again?</p>"
 
     $(".textFeedback").html(msg)
-    $("article").html("<button type=\"button\" name=\"again\">Yes</button>")
+    $("article").html("<button type=\"button\" class=\"btn_playAgain\" name=\"again\">Yes</button>")
 
     $("button").click(function(e){
 
-    $(".menu").toggleClass("menu-dropDown");
+      $(".menu").toggleClass("menu-dropDown");
 
       game.resetGameBoard()
       game.startPlayer()
 
       //console.log("Player turn at start = ", game.playerTurn)
 
-      if (game.playerTurn === false){game.computerTurn()}
-      //console.log("Out of moves")
+
+      if (game.playerTurn === true){
+        setTimeout(() => game.boardEnabled = true, 1000)
+      } else {
+        game.computerTurn()
+      }
 
     })
-  }
 
-  if (this.playerTurn === true){
-    return
-    } else {
+  } else {
 
-    let timer = Math.random()*3000
-    setTimeout(function(){ return game.computerTurn()}, timer)
+    if (this.playerTurn === true){
+
+      setTimeout(function(){
+        game.boardEnabled = true
+        console.log("you can go now !!!!!!!!!!!")
+      }, 100)
+
+      return
+
+      } else {
+
+      let timer = Math.random()*1000
+
+      setTimeout(function(){
+        game.computerTurn()
+      }, timer)
+    }
   }
 }
 
 game.init = function () {
 
+  $(".menu").toggleClass("menu_aniSetting");
   $(".menu").toggleClass("menu-dropDown");
 
   this.newGameBoard()
@@ -368,23 +395,13 @@ game.init = function () {
 
     console.log("Player turn at start = ", game.playerTurn)
 
-    if (game.playerTurn === false){game.computerTurn()}
-
+    if (game.playerTurn === true){
+      setTimeout(() => game.boardEnabled = true, 1000)
+    } else {
+      game.computerTurn()
+    }
   })
-
-
 }
 
+
 game.init()
-
-
-$(document).ready(function(){
-
-  $(".hamburger").click(function(){
-    $(this).toggleClass("is-active");
-    $(".menu").toggleClass("menu-dropDown")
-  })
-
-
-
-});

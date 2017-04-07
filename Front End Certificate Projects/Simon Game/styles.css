@@ -1,0 +1,270 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: darkgrey;
+  font-family: 'Orbitron', sans-serif;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+}
+
+@media screen and (min-width: 600px){
+
+  body {
+    background-color: blanchedalmond;
+  }
+
+  main {
+  width: 600px;
+  margin: auto;
+  background-color: black;
+  border-radius: 20px;
+  box-shadow: 0px 0px 26px 5px rgba(135,127,135,1);
+  -webkit-box-shadow: 0px 0px 26px 5px rgba(135,127,135,1);
+  -moz-box-shadow: 0px 0px 26px 5px rgba(135,127,135,1);
+  }
+}
+
+.header {
+  width: 100%;
+  height: 15%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+h1 {
+  font-size: 12vh;
+}
+
+.win {
+  animation: winSequence 3s ease-in-out;
+}
+
+
+button:focus {
+  outline: none;
+}
+
+/* .onSwitch */
+.onSwitch {
+  width: 80px;
+  height: 26px;
+  background: #333;
+  margin: 20px auto;
+  position: relative;
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+.onSwitch:after {
+    content: 'OFF';
+    color: #000;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+  }
+
+.onSwitch:before {
+    content: 'ON';
+    color: #27ae60;
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+  }
+
+.onSwitch label {
+    display: block;
+    width: 34px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+  }
+
+.onSwitch input[type=checkbox] {
+    visibility: hidden;
+}
+
+.onSwitch input[type=checkbox]:checked + label {
+      left: 43px;
+}
+/* end .onSwitch */
+
+
+/* start Controls */
+.controls {
+  width: 100%;
+  height: 15%;
+  background-color: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+}
+
+.controlBox {
+  background-color: ;
+  text-align: center;
+}
+
+.btn-start {
+  background-color: purple;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  border: 0px;
+}
+
+.btn-start:active {
+  box-shadow: inset 0px 0px 15px rgba(255,255,255, 0.6);
+  transform: translateY(5px);
+}
+
+
+#strictMode {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+
+}
+
+#strictMode + label {
+  display: block;
+}
+
+#strictMode:checked + label {
+ color: red;
+}
+
+
+.counter {
+  width: 70px;
+  height: 40px;
+  border: 2px solid red;
+  margin-bottom: 5px;
+  font-size: 30px;
+  color: red;
+  letter-spacing: 5px;
+  padding-left: 5px;
+}
+
+/* end Controls */
+
+
+/* start Game Buttons */
+.gameBtns {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+}
+
+.gameBtns button {
+  width: 50%;
+  height: 50%;
+  border-radius: 10px;
+  appearance: none;
+  border: 2px solid white;
+  /* box-shadow: inset 5px 5px 3px rgba(0, 0, 0, 0.4); */
+  /* border: none; */
+}
+
+.green {
+  background-color: rgba(34,139,34, 1);
+  /*border-color: rgba(0,100,0,1); */
+  transition: all 0.05s linear;
+  /*   border-color: #e1e1e1;
+   border-style: solid;
+   border-width: 1px;
+   line-height: 38px;
+   background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e1e1e1));
+   background: linear-gradient(#f6f6f6, #e1e1e1);
+   -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
+   box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15); */
+}
+
+.green.btn-active {
+  background-color: rgba(60,200,60, 1);
+}
+
+.red {
+  background-color: rgba(178,34,34,1);
+  transition: all 0.05s linear;
+}
+
+.red.btn-active {
+  background-color: rgba(255,0,0,0.7);
+  background-color: rgba(255,0,0,1);
+}
+
+.blue {
+  background-color: rgba(70,130,180,1	);
+  transition: all 0.05s linear;
+}
+
+.blue.btn-active {
+  background-color: rgba(0,191,255, 1);
+}
+
+.yellow {
+  background-color: rgba(250,200,0,1);
+  transition: all 0.05s linear;
+}
+
+.yellow.btn-active {
+  background-color: rgba(255,255,0,1);
+}
+/* end Game Buttons */
+
+
+ /* Animations */
+
+ @keyframes winSequence {
+  15% {color: blue}
+  30% {color: red}
+  45% {color: green}
+  60% {color: orange}
+  75% {color: purple}
+  88% {color: red}
+}
+
+/* superflous code
+.btn {
+  float: left;
+  margin: 5px 8px 5px 6px;
+  width: 50px;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  background-color: rgba(0,0,0,0.8);
+  box-shadow: 0px 3px black,  inset 0px -5px 10px rgba(255,255,255, 0.2);
+}
+
+.btn:active {
+  box-shadow: 0 0px black;
+  transform: translateY(5px);
+}
+*/

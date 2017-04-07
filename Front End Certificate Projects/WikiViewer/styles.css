@@ -1,0 +1,58 @@
+* {
+  padding: 0;
+  margin: 0;
+  border-sizing: border box;
+}
+
+body {
+  background-color: #fbf6ef;
+}
+
+section {
+  text-align: center;
+}
+
+header {
+  margin: 30px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+.searchForm {
+  width: 200px;
+  margin: 20px auto 0 auto;
+}
+
+.searchBtn {
+  margin-top: 10px;
+  min-width: 22rem;
+}
+
+.userSearch {
+  margin-top: 30px;
+}
+
+.results {
+  margin: 30px auto 0 auto;
+  width: 80%;
+  max-width: 500px;
+  min-height: 20rem;
+  padding: 1rem;
+  border: 0px solid black;
+  border-radius: 10px;
+-webkit-box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.49);
+-moz-box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.49);
+box-shadow: 10px 10px 15px -9px rgba(0,0,0,0.49);
+  background-color: #b2d3c1;
+  text-align: left;
+}
+
+.u-border {
+  border: 5px black solid;
+}

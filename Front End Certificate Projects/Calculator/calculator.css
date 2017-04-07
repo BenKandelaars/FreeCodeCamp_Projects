@@ -76,6 +76,7 @@ button {
 .btn:active {
   box-shadow: 0 0px black;
   transform: translateY(5px);
+  -webkit-transform: translateY(5px);
 }
 
 .btn_long {
