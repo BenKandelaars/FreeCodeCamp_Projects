@@ -19,8 +19,8 @@
   box-shadow: 0px 0px 21px 3px rgba(138,131,138,1);
   width: 100%;
   min-width: 250px;
-  max-width: 500px;
-  height: calc(50vh - 20px);
+  max-width: 600px;
+  height: calc(50vh - 20px - 2rem);
 }
 
 .mdView {
@@ -28,17 +28,15 @@
 }
 
 @media (min-width: 900px){
-  .container {
+  .container_sub {
+    display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100%
   }
 
   .userInput, .mdView {
-    height: 90vh;
-  }
-
-  textarea {
-    height: calc(90vh- 20px - 5px - 1.5rem - 10px);
+    height: 80vh;
   }
 }
 
@@ -49,11 +47,12 @@
 }
 
 textarea {
-  height: calc(50vh - 20px - 5px - 1.5rem - 10px);
+  height: calc(100% - 1.3rem - 10px);
   width: 100%;
   padding: 0 5px;
   border: none;
-  border-bottom-right-radius: 5px;
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 

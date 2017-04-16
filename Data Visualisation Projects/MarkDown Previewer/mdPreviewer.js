@@ -1,13 +1,9 @@
-//const userText = "This is the test value. Changes made"
-//let mdOutput = "This is the placeholder for the markdown output"
+let initialValue = 'Heading\n==\nSub Heading\n--\n5 Little monkeys *jumping* on the bed. \n__One fell off__ and bumped his head\n\n~~Father~~ Mother called the doctor and the doctor said\n\n"No more monkeys jumping on the bed."\n\n[Watch video of Nursery Rhyme on Youtube](https://www.youtube.com/watch?v=0uenvW3DrMI "Youtube video of the song")'
 
-let initialValue = 'Heading\n==\nSub Heading\n--\n5 Little monkeys *jumping* on the bed. \n__one fell off__ and bumped his head\n\n~~Father~~ Mother called the doctor and the doctor said\n\nNo more monkeys jumping on the bed.\n[Watch view on Youtube](https://www.youtube.com/watch?v=0uenvW3DrMI "Youtube video of the song")'
-
-/*marked.setOptions({
+marked.setOptions({
   gfm: true,
   breaks: true,
-
-}) */
+})
 
 class UserInput extends React.Component {
   constructor (props){
@@ -66,13 +62,17 @@ class App extends React.Component {
   render() {
     return (
       <main className="container">
-        <UserInput
-          updateUserInput={this.updateUserInput}
-          userInput={this.state.userInput}
-        />
-        <MarkdownView
-          value={this.state.mdOutput}
-        />
+
+        <h1>Markdown Converter</h1>
+        <div className="container_sub">
+          <UserInput
+            updateUserInput={this.updateUserInput}
+            userInput={this.state.userInput}
+          />
+          <MarkdownView
+            value={this.state.mdOutput}
+          />
+        </div>
       </main>
   )}
 }
