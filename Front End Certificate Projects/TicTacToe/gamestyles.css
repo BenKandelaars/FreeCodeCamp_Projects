@@ -1,17 +1,20 @@
 * {
   box-sizing: border-box;
+  margin: 0px;
 }
 
 body {
   height: 100vh;
-  width: 90%;
+  width: 100%;
   background-color: white;
-  margin: auto auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 main {
-  width: 100%;
-  height: 100%;
+  width: 90vmin;
+  height: 90vmin;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,8 +24,8 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 450px;
-  height: 450px;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   font-size: 150px;
 }
@@ -53,25 +56,31 @@ main {
   border: 5px red solid;
 }
 
+.menuWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-2000px);
+}
+
 .menu {
   max-width: 300px;
   width: 66vw;
   max-height: 300px;
   height: 66vw;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  background-color: #fe809c;
+  background-color: #8172ad;
   opacity: 0;
-  transform: translate(-50%, -100vh);
+  transform: translateY(-20px);
+  transition: all 1s ease-in-out;    
   display: flex;
   align-content: center;
   justify-content: center;
   flex-direction: column;
-}
-
-.menu_aniSetting {
-  transition: all 0.8s ease-in-out;
 }
 
 .textFeedback {
@@ -86,8 +95,13 @@ main {
 }
 
 .menu-dropDown {
-  transform: translate(-50%, -50%);
-  opacity: 1
+  transform: translateX(0);
+  display: flex;
+}
+
+.menu-dropDown .menu {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 button {
@@ -113,15 +127,17 @@ button:focus {
 
 @media(max-width: 450px){
   main {
-    width: 100vw;
-    height: 100vw;
+    width: 90vw;
+    height: 90vw;
+  }
+
+  #board {
     font-size: 33vw;
   }
 
   .menu {
     width: 80vw;
     height: 80vw;
-    top: -80vw;
   }
 
 /*

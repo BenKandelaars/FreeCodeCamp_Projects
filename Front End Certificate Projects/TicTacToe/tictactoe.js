@@ -290,7 +290,7 @@ game.checkGameEnd = function (){
     let nextGame = "Play Again?"
     let congratulations = "";
 
-    $(".menu").toggleClass("menu-dropDown")
+    $(".menuWrapper").toggleClass("menu-dropDown")
 
 //    $(".menu").html("<p>Computer won. " + nextGame + "</p>")
 
@@ -307,7 +307,7 @@ game.checkGameEnd = function (){
 
     $("button").click(function(e){
 
-      $(".menu").toggleClass("menu-dropDown");
+      $(".menuWrapper").toggleClass("menu-dropDown");
 
       game.resetGameBoard()
       game.startPlayer()
@@ -326,7 +326,7 @@ game.checkGameEnd = function (){
     })
   } else if (this.possibleMoves(this.gameBoard).length == 0){
 
-    $(".menu").toggleClass("menu-dropDown")
+    $(".menuWrapper").toggleClass("menu-dropDown")
 
     let msg = "<p>Draw</p>"
 
@@ -337,7 +337,7 @@ game.checkGameEnd = function (){
 
     $("button").click(function(e){
 
-      $(".menu").toggleClass("menu-dropDown");
+      $(".menuWrapper").toggleClass("menu-dropDown");
 
       game.resetGameBoard()
       game.startPlayer()
@@ -377,8 +377,8 @@ game.checkGameEnd = function (){
 
 game.init = function () {
 
-  $(".menu").toggleClass("menu_aniSetting");
-  $(".menu").toggleClass("menu-dropDown");
+  // $(".menu").toggleClass("menu_aniSetting");
+  $(".menuWrapper").toggleClass("menu-dropDown");
 
   this.newGameBoard()
   this.listeners()
@@ -389,7 +389,7 @@ game.init = function () {
 
     game.playerOne == "X" ? game.computerPiece = "O" : game.computerPiece = "X"
 
-    $(".menu").toggleClass("menu-dropDown")
+    $(".menuWrapper").toggleClass("menu-dropDown")
 
     game.startPlayer()
 
